@@ -33,7 +33,13 @@ class Conference_controller{
     }
 
     static function create_Controller(){
-        $error = "";
+        $error_name_conf= "";
+        $error_desc_conf= "";
+        $error_date_conf= "";
+        $error_org_conf= "";
+        $error_lieu_conf= "";
+        $error_u = "";
+        
         $check_connection = User_controller::checkLog();
         
         $data = Conference::getAllConference();
@@ -48,20 +54,20 @@ class Conference_controller{
             $lieu = $_POST["lieu_conference"];
 
             if (empty($conference_name)) {
-                $error = "*You must have mentionned a conference name !";
-            }else if(empty($conference_desc)){
-                $error   = "*You must have mentionned the conference description !";
-            }else if(empty($date_conference)){
-                $error = "*You must have mentionned the conference d-day !";
+                $error_name_conf = "*You must have mentionned a conference name !";
             }else if(empty($organisateur)){
-                $error = "*You must mention organisateur";
+                $error_org_conf = "*You must mention organisateur";
             }else if(empty($lieu)){
-                $error = "Must mention lieu";
-            } else{
+                $error_lieu_conf = "*Must mention lieu";
+            }else if(empty($date_conference)){
+                $error_date_conf = "*You must have mentionned the conference d-day !";
+            }else if(empty($conference_desc)){
+                $error_desc_conf   = "*You must have mentionned the conference description !";
+            }else{
                 if($check_connection != false)
                     ( new Conference(null, $conference_name, $conference_desc, $date_conference, $organisateur, $lieu) )->createConference($check_connection);
                 else
-                    $error = "You must connect";           
+                    $error_u = "*You must connect";           
             }
             
         }
@@ -88,24 +94,29 @@ class Conference_controller{
     }
 
     static function generation_Conference($id){
-        $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Conference_generetor'.DIRECTORY_SEPARATOR.'.env';
+        $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Conference_generetor'.DIRECTORY_SEPARATOR.'env';
 
         $data = 'USER_HOST = "localhost"'.PHP_EOL.'USER_DBNAME = "Conference"'.PHP_EOL.'USER_USERNAME = "agent"'.PHP_EOL.'USER_PWD = "agent"'.PHP_EOL.'CONFERENCE_TEST = '.$id;
 
-        file_put_contents($file, $data);
+        echo $file."\n";
+        echo $data."\n";
+
+        $myfile =fopen($file, "w");
 
 
-         
+        fwrite($myfile, $data);
+
         // Enter the name of directory
         $pathdir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Conference_generetor';
 
-        var_dump($pathdir);
+        // var_dump($pathdir);
         
         // Enter the name to creating zipped directory
         $zipcreated = 'NewConference'.$id.'.zip';
         var_dump($zipcreated);
         
         // Create new zip class
+
         $zip = new ZipArchive;
         var_dump($zip);
         
@@ -123,6 +134,6 @@ class Conference_controller{
         }
 
 
-        header("Location: index.php");
+        // header("Location: index.php");
     }
 }

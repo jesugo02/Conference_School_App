@@ -18,7 +18,9 @@
                 <li class="info-gene-li"><strong> Creator :</strong> <?= $data_conference->creator ?></li>
                 <li class="info-gene-li"> <strong>Description conference : </strong> <br> <?= $data_conference->description ?></li>
             </ul>
-            <a href= <?= 'index.php?action=generation&id='.$data_conference->id_conf ?> > Generetaion du site </a>       
+            <div class = "button button-green">
+                <a href= <?= "index.php?action=generation&id=".$data_conference->id_conf ?> > Generation du site </a>       
+            </div>
         </div>
 
         <div id="info_publication" class="modal_config_conference_publication hidde">
@@ -74,8 +76,8 @@
         </div>
     </div>
 
-    <div>
-        <a id="quit" href="index.php">Quit</a>
+    <div class = "button button-delete" style = "float : right;">
+        <a id="quit" href="index.php" >Quit</a>
     </div>
 
 </div>

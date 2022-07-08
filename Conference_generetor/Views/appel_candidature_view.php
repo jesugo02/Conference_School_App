@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/Modules/acceuil.css">
+    <!-- <link rel="stylesheet" href="Style/Base/reset.css"> -->
+    <link rel="stylesheet" href="Style/Base/base.css">
+
     <title>Document</title>
 </head>
 <body>
     <?php include("header_view.php") ?>
+    <div class = "content">
     <?php foreach($data as $data_elem) {?>
         
         <div>
-            <h1>CANDIDATURE POUR INTERVENANTS ET MODÉRATEURS</h1>
-            <p>
-                Les organisateurs de la Conférence "<strong><?= $data_elem["sujet_appel"]?> </strong>"
+            <h1 style = "color : blue;">CANDIDATURE POUR INTERVENANTS ET MODÉRATEURS</h1>
+            <p style = "text-align: justify; margin-left: 40px; margin-right : 80px">
+            <span style ="margin-left: 50px">Les organisateurs de la Conférence</span>  "<strong><?= $data_elem["sujet_appel"]?> </strong>"
                 cherchent des intervenants et/ou modérateurs pour participer aux panels sur la "<strong><?= $data_elem["contenu"]?></strong>" et
 d'autres sessions de la conférence. Les frais d’inscription et de voyage des participant sélectionnés seront
 couverts par l'organisation; ainsi, les participant joueront un rôle essentiel lors de la conférence, en
@@ -24,8 +29,7 @@ compter sur le soutien et la référence d’au moins un professionnel.
         </div>
     
     <?php }?>
+    </div>
     <?php include "footer_view.php" ?>
 </body>
 </html>
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, unde.

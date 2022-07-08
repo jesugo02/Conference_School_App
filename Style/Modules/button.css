@@ -1,10 +1,12 @@
 .button{
     display: inline-block;
-    align-self: center;
+    align-self: none;
     padding: 1rem 1.5rem;
     border-radius: 10px;
     font-size: 1rem;
     box-shadow: 0 0 5px #D8E1E8 ;
+    margin-bottom: 7px;
+
 }
 
 .button-login{
@@ -19,6 +21,7 @@
 .button-delete{
     background-color: red;
     color: white;
+    
 }
 
 .button-green{

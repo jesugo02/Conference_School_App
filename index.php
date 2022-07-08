@@ -45,6 +45,7 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             break;
 
         case "generation":
+            echo "yo i'm here !!";
             Conference_controller::generation_Conference($_GET["id"]);
             break;
     }

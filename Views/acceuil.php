@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="Style/Modules/info_conference.css">
     <link rel="stylesheet" href="Style/Modules/info_activite.css">
     <link rel="stylesheet" href="Style/Modules/info_appel.css">
+    <link rel="stylesheet" href="Style/Modules/supprimer.css">
 
     <title>Document</title>
 </head>
@@ -36,7 +37,7 @@
             <div class="acceuil-conference">
                 <ul class="acceuil-list-conference">
                     <?php foreach($data as $d_conf){ ?>
-
+                  <div>
                     <li  class="acceuil-list-conference-element">
                         <div class="acceuil-list-conference-title">
                             <span class="acceuil-list-conference-name" ><?= $d_conf->nom_conference ?></span>
@@ -44,9 +45,9 @@
                         </div>
                         <span class="acceuil-list-conference-status"  ><?=  $d_conf->status?></span>
                         <span class="acceuil-list-conference-creator"  ><?=  $d_conf->creator ?></span>
-                        <a id="more_conf" href=<?='index.php?id='.$d_conf->id_conf ?> class="acceuil-list-conference-showmore">Voir plus</a>
+                        <div><a id="more_conf" href=<?='index.php?id='.$d_conf->id_conf ?> class=" button button-create acceuil-list-conference-showmore">Voir plus</a></div> 
                     </li>
-
+                    </div>
                     <?php } ?>
                 </ul>
             </div>
